@@ -7,6 +7,30 @@ def printGrid(grid, rowNum, colNum):
     print(("+----" * colNum) + "+")
 
 
+def find_eulerian_circuit(graph):
+    if not enough_braces(graph):
+        return None
+    circuit = []
+    while circuit:
+        vertex = circuit[0]
+        for neighbor in graph[vertex]:
+            if neighbor not in circuit:
+                circuit.append(neighbor)
+                break
+        else:
+            circuit.pop()
+    return circuit
+
+
+def enough_braces(graph):
+    num_of_brace = []
+    for r in graph:
+        for c in r:
+            if c == '\\\\':
+                num_of_brace.append('\\\\')
+    return len(num_of_brace) <= (len(graph) + len(graph[0]))
+
+
 if __name__ == "__main__":
     print("Welcome to Kam's Grid Bracing Analyzer")
     rows = int(input("Enter the number of rows: "))
@@ -22,3 +46,8 @@ if __name__ == "__main__":
         braces[row][col] = '\\\\'
 
     printGrid(braces, rows, cols)
+    isRigid = find_eulerian_circuit(braces)
+    if isRigid is None:
+        print("This graph is not rigid")
+    else:
+        print("This graph passes rigidity")
