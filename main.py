@@ -32,7 +32,7 @@ def enough_braces(graph):
 
 
 if __name__ == "__main__":
-    print("Welcome to Kam's Grid Bracing Analyzer")
+    print("Welcome to Sameer's Grid Bracing")
     rows = int(input("Enter the number of rows: "))
     cols = int(input("Enter the number of columns: "))
 
