@@ -28,7 +28,7 @@ def enough_braces(graph):
         for c in r:
             if c == '\\\\':
                 num_of_brace.append('\\\\')
-    return len(num_of_brace) <= (len(graph) + len(graph[0]))
+    return len(num_of_brace) <= (len(graph) + len(graph[0])) - 1
 
 
 if __name__ == "__main__":
